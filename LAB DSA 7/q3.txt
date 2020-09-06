@@ -1,0 +1,86 @@
+/*Write separate user defined functions for the following insert operations in a double linked list (i) Insert at End (ii) Insert after a specific value (iii) Insert before a specific value */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next, *prev;
+} * start, *newnode, *current;
+
+void insertend();
+void insertafterspecific();
+void insertbeforespecific();
+
+main()
+{
+    int x, ch;
+    printf("Enter the data of the 1st node");
+    scanf("%d", &x);
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = x;
+    newnode->prev = NULL;
+    newnode->next = NULL;
+    start = newnode;
+    current = newnode;
+}
+
+void insertend()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d",&x);
+    newnode->data=x;
+    newnode->next=NULL;
+    newnode->prev=current;
+    current->next=newnode;
+    current=newnode;
+}
+
+void insertafterspecific()
+{
+    int x,ele;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d",&x);
+    printf("Enter the value after which you want to insert");
+    scanf("%d", &ele);
+    struct node *p,*q;
+    p=start;
+    while(p->data!=ele)
+    {
+        p=p->next;
+    }
+    q=p->next;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data=x;
+    newnode->prev=p;
+    p->next=newnode;
+    newnode->next=q;
+    q->prev=newnode;
+}
+
+void insertbeforespecific()
+{
+    int x,ele;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d",&x);
+    printf("Enter the value after which you want to insert");
+    scanf("%d", &ele);
+    struct node *p,*q;
+    while(p->next->data!=ele)
+    {
+        p=p->next;
+    }
+    q=p->next;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data=x;
+    newnode->prev=p->prev;
+    p->prev=newnode;
+    newnode->next=q;
+    q->prev->next=newnode;   
+}

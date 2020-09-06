@@ -1,0 +1,53 @@
+/*Write user defined functions to find the smallest and largest element in a single linked list*/
+    
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+} * start, *current, *newnode;
+
+void largest();
+void smallest();
+void main()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d", &x);
+    newnode->data = x;
+    newnode->next = start;
+    start = newnode;
+}    
+
+void largest()
+{
+    struct node *p;
+    p=start;
+    int max;
+    max=p->data;
+    while(p!=NULL)
+    {
+        if(p->data>max)
+        max=p->data;
+        p=p->next;
+
+    }      
+}
+
+void smallest()
+{
+    struct node *p;
+    p=start;
+    int min;
+    min=p->data;
+    while(p!=NULL)
+    {
+        if(p->data<min)
+        min=p->data;
+        p=p->next;
+    }
+}

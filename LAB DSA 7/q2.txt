@@ -1,0 +1,84 @@
+/*Write a menu driven program to implement a double linked list with the following options: 1-Insert at Beginning 2-Display 3-Delete from Beginning 4-Exit*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next, *prev;
+} * start, *newnode, *current;
+
+main()
+{
+    int x, ch;
+    printf("Enter the data of the 1st node");
+    scanf("%d", &x);
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = x;
+    newnode->prev = NULL;
+    newnode->next = NULL;
+    start = newnode;
+    current = newnode;
+}
+while (1)
+{
+    printf("1- Insert at beggining \n 2- Display \n 3- Delete at beggining \n 4- Exit \n");
+    printf("Enter your choice");
+    scanf("%d", &ch);
+
+    switch (ch)
+    {
+    case 1:
+        insertbeg();
+        break;
+    case 2:
+        display();
+        break;
+
+    case 3:
+       insertend(();
+        break;
+    
+    case 2:
+        exit();
+        
+    default:
+        printf("Invalid input");
+        break;
+    }
+}
+
+void insertbeg()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d", &x);
+    newnode->data = x;
+    newnode->prev = NULL;
+    newnode->next = start;
+    start->prev = newnode;
+    start = newnode;
+}
+
+void display()
+{
+    struct node *p;
+    p = start;
+    while (p != NULL)
+    {
+        printf("%d \t", p->data);
+        p = p->next;
+    }
+}
+
+void deletebeg()
+{
+    struct node *p;
+    p = start;
+    start = start->next;
+    free(p);
+    start->prev = NULL;
+}

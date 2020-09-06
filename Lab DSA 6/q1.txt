@@ -1,0 +1,35 @@
+/*Write a user defined function to Search an element in a single linked list*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+} * start, *current, *newnode;
+
+void search();
+void main()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d", &x);
+    newnode->data = x;
+    newnode->next = start;
+    start = newnode;
+}
+
+void search()
+{
+    int ele;
+    struct node *p;
+    p=start;
+    while(p->data!=ele)
+    {
+        p=p->next;
+    }
+    printf("%d", p->data);
+}

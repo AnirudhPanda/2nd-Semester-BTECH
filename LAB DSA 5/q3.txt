@@ -1,0 +1,78 @@
+/*Write separate user defined functions to perform the following operations on a single linked list: (i) Insertion at End  (ii) Insertion after a specific value (iii) Insert before a specific value */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+} * start, *current, *newnode;
+void insertend();
+void insertafter();
+void insertbefore();
+
+void main()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d", &x);
+    newnode->data = x;
+    newnode->next = start;
+    start = newnode;
+}
+
+void insertend()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d",&x);
+    newnode->data=x;
+    newnode->next=NULL;
+    current->next=newnode;
+    current=newnode;
+}
+
+void insertafter()
+{
+    int x,ele;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d",&x);
+    printf("Enter the value after which you want to insert");
+    scanf("%d", &ele);
+    struct node *p,*q;
+    p=start;
+    while(p->data!=ele)
+    {
+        p=p->next;
+    }
+    q=p->next;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data=x;
+    p->next=newnode;
+    newnode->next=q;
+}
+
+void insertbefore()
+{
+    int x,ele;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d",&x);
+    printf("Enter the value after which you want to insert");
+    scanf("%d", &ele);
+    struct node *p,*q;
+    while(p->next->data!=ele)
+    {
+        p=p->next;
+    }
+    q=p->next;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data=x;
+    p->next=newnode;
+    newnode->next=q;
+}

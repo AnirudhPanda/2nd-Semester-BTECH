@@ -1,0 +1,51 @@
+/*Implement Linear Queue using linked list representation to perform the following operations:  1-Insert, 2-Delete, 3-Display, 4-Exit*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+} *front=NULL,*newnode,*rear=NULL;
+
+void insert()
+{
+    int x;
+    newnode=(struct node *) malloc (sizeof (struct node));
+    printf("Enter the value of x");
+    scanf("%d",&x);
+    newnode->data=x;
+    newnode->next=NULL;
+    if(rear==NULL)
+    {
+        front=newnode;
+        rear=newnode;
+    }
+    else
+    {
+        front=newnode;
+        front->next=rear;
+    }
+    
+}
+
+void delete()
+{
+    struct node *p;
+    p=front;
+    front=front->next;
+    printf("%d is deleted",p->data);
+}
+
+void display()
+{
+    struct node *p;
+    p=front;
+    while(p!=NULL)
+    {
+        printf("%d",p->data);
+        p=p->next;
+    }
+}

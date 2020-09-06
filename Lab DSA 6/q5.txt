@@ -1,0 +1,40 @@
+/*Write a program to create two separate linked lists and merge the elements*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+} * start, *current, *newnode;
+
+void merge();
+void main()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d", &x);
+    newnode->data = x;
+    newnode->next = start;
+    start = newnode;
+}
+
+void merge()
+{
+    struct node *p, *q, *s;
+
+    if (p->data <= q->data)
+    {
+        s = p;
+        s->next = (p->next, q);
+    }
+    else
+    {
+        s = q;
+        s->next = (p, q->next);
+    }
+    return (s);
+}

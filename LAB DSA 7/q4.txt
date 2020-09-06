@@ -1,0 +1,91 @@
+/*Write separate user defined functions for the following Delete  operations in a double linked list (i) Delete from End (ii) Delete after a specific value (iii) Delete before a specific value (iv) Delete a specific value */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next, *prev;
+} * start, *newnode, *current;
+
+void deleteend();
+void deleteafterspecific();
+void deletebeforespecific();
+void deletespecific();
+main()
+{
+    int x, ch;
+    printf("Enter the data of the 1st node");
+    scanf("%d", &x);
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = x;
+    newnode->prev = NULL;
+    newnode->next = NULL;
+    start = newnode;
+    current = newnode;
+}
+
+void deleteend()
+{
+    struct node *p;
+    p = current;
+    curent = current->prev;
+    free(p);
+    current->next = NULL;
+}
+
+void deleteafterspecific()
+{
+    struct node *p, *q, *r;
+    p = start;
+    int ele;
+    printf("Enter the specific element");
+    scanf("%d", &ele);
+    while(p->data!=ele)
+    {
+        p=p->next;
+    }
+    q=p->next;
+    r=q->next;
+    p->next=r;
+    r->prev=p;
+    free(q);
+}
+
+void deletebeforespecific()
+{
+    struct node *p,*q,*r;
+    p=start;
+    int ele;
+    printf("Enter the specific element");
+    scanf("%d", &ele);
+    while(p->data!=ele)
+    {
+        p=p->next;
+    }
+    q=p->prev;
+    r=q->prev;
+    r->next=p;
+    p->prev=r;
+    free(q);
+}
+
+void deletespecific()
+{
+    int ele;
+    printf("Enter the element to be deleted");
+    scanf("%d",&ele);
+    struct node *p,*q,*r;
+    p=start;
+    while(p->data!=ele)
+    {
+        p=p->next;
+    }
+    q=p->next;
+    r=p->prev;
+    r->next=q;
+    q->prev=r;
+    free(p);
+}

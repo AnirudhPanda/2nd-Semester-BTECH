@@ -1,0 +1,37 @@
+/*Write a user defined function to reverse the list. */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+} * start, *current, *newnode;
+
+void reverse();
+void main()
+{
+    int x;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of x");
+    scanf("%d", &x);
+    newnode->data = x;
+    newnode->next = start;
+    start = newnode;
+}    
+
+void reverse()
+{
+    struct node *p,*c,*n;
+    p=NULL;
+    c=start;
+    while(c!=NULL)
+    {
+        n=c->next;
+        c->next=p;
+        p=c;
+        c=n;
+    }
+}

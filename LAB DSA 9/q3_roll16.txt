@@ -1,0 +1,38 @@
+/*Implement insertion sort to sort the elements of any user entered array in ascending order. */
+
+#include <stdio.h>
+
+void insertionsort(int[], int);
+
+main()
+{
+    int a[20], i, n;
+    printf("Enter the number of elements in the array");
+    scanf("%d", &n);
+    printf("Enter the array elements");
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d \t", &a[i]);
+    }
+    printf("The unsorted array is %d", a[i]);
+}
+
+void insertionsort(int a[], int n)
+{
+    int key, i, j, ;
+    for (i = 1; i < n; i++)
+    {
+        key = a[i];
+        j = i - 1;
+        while (j >= 0 && a[j] > key)
+        {
+            a[j + 1] = a[j];
+            j = j - 1;
+        }
+        a[j + 1] = key;
+    }
+}
+
+
+ANIRUDH PANDA
+ROLL - 16(D2)
